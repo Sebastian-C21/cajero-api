@@ -1,11 +1,11 @@
 from pydantic import BaseModel
 from datetime import datetime
 
-class TrasanctionIn(BaseModel):
+class TransactionIn(BaseModel):
     username: str
     value: int
 
-class TransactoinOut(BaseModel):
+class TransactionOut(BaseModel):
     id_transaction: int
     username: str
     date: datetime
