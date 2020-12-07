@@ -10,7 +10,7 @@
 #from .models.transaction_models import TransactionIn, TransactionOut
 
 
-from db.user_db import UserInDB
+from db.user_db import UserInDB, database_users
 from db.user_db import update_user, get_user
 
 from db.transaction_db import TransactionInDB
@@ -49,10 +49,15 @@ async def make_transaction(transaction_in: TransactionIn):
         raise HTTPException(status_code=404,detail="El usuario no existe")
     if user_in_db.balance < transaction_in.value:
         raise HTTPException(status_code=400,detail="Sin fondos suficientes")
+
     user_in_db.balance = user_in_db.balance - transaction_in.value
     update_user(user_in_db)
+
     transaction_in_db = TransactionInDB(**transaction_in.dict(),
     actual_balance = user_in_db.balance)
+    
     transaction_in_db = save_transaction(transaction_in_db)
     transaction_out = TransactionOut(**transaction_in_db.dict())
     return transaction_out
+
+print(database_users)
