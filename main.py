@@ -1,15 +1,3 @@
-#from . import db
-#from . import models
-
-#from .db.user_db import update_user, get_user
-
-#from .db.transaction_db import TransactionInDB
-#from .db.transaction_db import save_transaction
-
-#from .models.user_models import UserIn, UserOut
-#from .models.transaction_models import TransactionIn, TransactionOut
-
-
 from db.user_db import UserInDB, database_users
 from db.user_db import update_user, get_user
 

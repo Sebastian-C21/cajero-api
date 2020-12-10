@@ -28,12 +28,8 @@ def update_user(user_in_db: UserInDB):
     database_users[user_in_db.username] = user_in_db
     return user_in_db
 
-#print(database_users)
-
 def get_password(user: str, password: str):
     if user in database_users.keys():
         return print(database_users[user].username)
     else:
         return None
-
-get_password("camilo24","root")
