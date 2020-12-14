@@ -1,11 +1,17 @@
+from enum import unique
 from typing import Dict
 from pydantic import BaseModel
+from sqlalchemy import Column, Integer, String
+from db.db_connection import Base, engine
 
-class UserInDB(BaseModel): #así se hace la herencia le python
-    username: str
-    password: str
-    balance: int
+class UserInDB(Base): #así se hace la herencia le python
+    __tablename__ = "users"
+    username = Column(String, primary_key=True, unique=True)
+    password = Column(String)
+    balance = Column(Integer)
+Base.metadata.create_all(bind=engine)
 
+"""
 #definiendo la base de dato ficticia
 database_users = Dict[str, UserInDB]
 
@@ -17,6 +23,7 @@ database_users = {
                             "password":"holaa",
                             "balance":78000})
 }
+"""
 
 def get_user(username: str):
     if username in database_users.keys():
