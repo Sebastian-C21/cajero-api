@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 #Creando motor y conexión a la base de datos
-DATABASE_URL = "postgresql://postgres:postgres981211@host:5432/MISIONTIC"
+DATABASE_URL = "postgresql://postgres:postgres981211@localhost:5432/MISIONTIC"
 engine = create_engine(DATABASE_URL)
 
 #creando sesión 
